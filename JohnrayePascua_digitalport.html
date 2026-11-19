@@ -1,0 +1,3480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Marc Johnraye D. Pascua - IT Specialist & Database Systems Portfolio. Explore projects, certifications, systems engineering expertise, and community initiatives.">
+    <meta name="author" content="Marc Johnraye D. Pascua">
+    <title>Marc Johnraye Pascua | IT Specialist & Database Systems Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+       CSS VARIABLES & THEME CONFIGURATION
+       ========================================================================== */
+        :root {
+            --bg-darkest: #070a11;
+            --bg-darker: #0b111e;
+            --bg-card: #10192b;
+            --bg-card-hover: #15223a;
+            --bg-card-elevated: #182845;
+            --border-subtle: rgba(255, 255, 255, 0.07);
+            --border-glow: rgba(0, 229, 255, 0.35);
+            --border-active: #00e5ff;
+
+            --primary: #00e5ff;
+            --primary-glow: rgba(0, 229, 255, 0.25);
+            --primary-dark: #00a8bb;
+            --secondary: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+
+            --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 25px rgba(0, 229, 255, 0.25);
+            --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset & Base Setup */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            color-scheme: dark;
+        }
+
+        body {
+            background-color: var(--bg-darkest);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(circle at 15% 10%, rgba(0, 229, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 60%, rgba(59, 130, 246, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 50% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Subtle Animated Tech Grid Overlay */
+        .bg-grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-muted);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        code,
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ==========================================================================
+       LAYOUT ARCHITECTURE (DESKTOP BENTO & MOBILE APP HYBRID)
+       ========================================================================== */
+        .app-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 310px 1fr;
+            gap: 28px;
+            min-height: 100vh;
+        }
+
+        /* ==========================================================================
+       SIDEBAR / LEFT BENTO PROFILE COLUMN (STICKY ON DESKTOP)
+       ========================================================================== */
+        .sidebar {
+            position: sticky;
+            top: 24px;
+            height: calc(100vh - 48px);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-card);
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-subtle) transparent;
+            backdrop-filter: blur(12px);
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--border-subtle);
+            border-radius: var(--radius-full);
+        }
+
+        /* Profile Header Widget */
+        .profile-widget {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent-purple));
+            box-shadow: 0 0 20px var(--primary-glow);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar-wrapper:hover {
+            transform: scale(1.04);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 50%;
+            background-color: var(--bg-darker);
+            display: block;
+        }
+
+        .status-indicator {
+            position: absolute;
+            bottom: 4px;
+            right: 8px;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-emerald);
+            border: 3px solid var(--bg-card);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-emerald);
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 4px;
+        }
+
+        .profile-role {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .profile-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            color: #d1fae5;
+            font-weight: 500;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-emerald);
+            border-radius: 50%;
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+            }
+        }
+
+        /* Social Icons Row */
+        .social-pills {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 18px 0;
+        }
+
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: var(--transition-base);
+        }
+
+        .social-btn:hover {
+            color: #ffffff;
+            background: var(--bg-card-elevated);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Quick Action Buttons */
+        .sidebar-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            font-size: 0.825rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            border: none;
+            transition: var(--transition-base);
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #00c0f8);
+            color: #050b14;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #4ef4ff, var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Sidebar Navigation Menu */
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 12px 0 20px;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition-base);
+        }
+
+        .nav-item a svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-item a:hover,
+        .nav-item.active a {
+            color: #ffffff;
+            background: rgba(0, 229, 255, 0.08);
+            border-left: 3px solid var(--primary);
+        }
+
+        .nav-item a:hover svg {
+            stroke: var(--primary);
+            transform: translateX(2px);
+        }
+
+        /* Sidebar Contact Info Snippets */
+        .sidebar-contact-info {
+            padding-top: 16px;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.78rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .contact-item svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--primary);
+            flex-shrink: 0;
+        }
+
+        /* ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* ==========================================================================
+       HERO BENTO CARD
+       ========================================================================== */
+        .hero-bento {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 36px 40px;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.25fr 0.9fr;
+            align-items: center;
+            gap: 32px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .hero-bento::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-tagline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 18px;
+            letter-spacing: 0.03em;
+        }
+
+        .hero-heading {
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+
+        .hero-heading span.gradient-text {
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Hero Portrait Visual Frame */
+        .hero-visual-frame {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portrait-card {
+            position: relative;
+            width: 270px;
+            height: 340px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.2);
+            background: #090e18;
+            transition: transform 0.4s ease;
+        }
+
+        .portrait-card:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .portrait-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .portrait-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .portrait-overlay-badge {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            right: 14px;
+            padding: 10px 14px;
+            background: rgba(11, 17, 30, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .portrait-toggle-btn {
+            cursor: pointer;
+            background: rgba(0, 229, 255, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: var(--transition-base);
+        }
+
+        .portrait-toggle-btn:hover {
+            background: var(--primary);
+            color: #050b14;
+        }
+
+        /* Floating Metric Badges around portrait */
+        .floating-metric {
+            position: absolute;
+            padding: 8px 14px;
+            background: rgba(16, 25, 43, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .floating-metric.top-left {
+            top: 15px;
+            left: -20px;
+        }
+
+        .floating-metric.bottom-right {
+            bottom: 25px;
+            right: -20px;
+        }
+
+        .metric-icon-box {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(0, 229, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .metric-data h4 {
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+
+        .metric-data span {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+       STATS ROW (BENTO COUNTERS)
+       ========================================================================== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 229, 255, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0, 229, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 4px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-number span {
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.775rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+       SECTION HEADERS
+       ========================================================================== */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        /* ==========================================================================
+       CORE IT SERVICES / SPECIALTIES (INSPIRED BY REFERENCE DESIGN)
+       ========================================================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .service-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 229, 255, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .service-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            background: rgba(0, 229, 255, 0.08);
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+        }
+
+        .service-icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .service-icon-wrap svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+        }
+
+        .service-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .service-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag-chip {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            padding: 3px 9px;
+            border-radius: var(--radius-full);
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+       PROJECTS BENTO SHOWCASE (BARANGAY, RMS, GEO-TRACK)
+       ========================================================================== */
+        .projects-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+            position: relative;
+            transition: var(--transition-base);
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-glow);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .project-card.featured::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .project-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            background: rgba(0, 229, 255, 0.08);
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+        }
+
+        .project-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 16px;
+            max-width: 680px;
+        }
+
+        .project-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.825rem;
+            color: #cbd5e1;
+        }
+
+        .highlight-item svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--accent-emerald);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .project-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-pill {
+            font-size: 0.725rem;
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+        }
+
+        .project-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 140px;
+        }
+
+        .action-circle-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-base);
+            cursor: pointer;
+        }
+
+        .action-circle-btn:hover {
+            background: var(--primary);
+            color: #050b14;
+            transform: scale(1.1) rotate(45deg);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .action-circle-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+        }
+
+        /* ==========================================================================
+       TECHNICAL TOOLKIT & PERCENTAGES (INSPIRED BY REFERENCE DESIGN)
+       ========================================================================== */
+        .toolkit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .tool-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 229, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .tool-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .tool-icon-wrapper svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .tool-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .tool-category {
+            font-size: 0.725rem;
+            color: var(--text-muted);
+        }
+
+        .skill-progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-top: 4px;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-full);
+            transition: width 1s ease-in-out;
+        }
+
+        .skill-pct {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+       COMMUNITY & VOLUNTEERING: AIAHDVOCACY 2024
+       ========================================================================== */
+        .volunteering-bento {
+            background: linear-gradient(135deg, rgba(16, 25, 43, 0.95) 0%, rgba(22, 17, 43, 0.9) 100%);
+            border: 1px solid rgba(236, 72, 153, 0.25);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .volunteering-bento::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .vol-badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px;
+            align-items: center;
+        }
+
+        .vol-tag-pink {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #f472b6;
+            background: rgba(236, 72, 153, 0.12);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .vol-tag-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .vol-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .vol-lead-quote {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding-left: 14px;
+            border-left: 3px solid #ec4899;
+        }
+
+        .vol-grid-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .vol-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--radius-md);
+            padding: 18px;
+        }
+
+        .vol-box-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #f9a8d4;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vol-box p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+       TIMELINE: EXPERIENCE & EDUCATION
+       ========================================================================== */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .timeline-column {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 26px;
+        }
+
+        .timeline-col-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timeline-col-title svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--primary);
+        }
+
+        .timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -27px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .timeline-date {
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .timeline-role {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .timeline-institution {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        .timeline-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        /* ==========================================================================
+       CERTIFICATIONS BADGES ROW
+       ========================================================================== */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            transition: var(--transition-base);
+        }
+
+        .cert-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 229, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .cert-badge-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .cert-badge-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .cert-info h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .cert-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+       INTERACTIVE IT CONSOLE / TERMINAL (EASTER EGG)
+       ========================================================================== */
+        .terminal-card {
+            background: #060910;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .terminal-header {
+            background: #0d1424;
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tdot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .tdot-red {
+            background: #ef4444;
+        }
+
+        .tdot-yellow {
+            background: #f59e0b;
+        }
+
+        .tdot-green {
+            background: #10b981;
+        }
+
+        .terminal-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .terminal-body {
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            min-height: 180px;
+            max-height: 260px;
+            overflow-y: auto;
+        }
+
+        .terminal-line {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .term-prompt {
+            color: var(--primary);
+        }
+
+        .term-cmd {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .term-output {
+            color: var(--text-muted);
+        }
+
+        .term-success {
+            color: var(--accent-emerald);
+        }
+
+        .terminal-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #080d17;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .term-pill-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.725rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .term-pill-btn:hover {
+            background: rgba(0, 229, 255, 0.15);
+            border-color: var(--primary);
+        }
+
+        /* ==========================================================================
+       CONTACT & CONNECT BENTO SECTION
+       ========================================================================== */
+        .contact-bento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-card-link {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition-base);
+        }
+
+        .contact-card-link:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .contact-card-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .contact-icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .contact-icon-box svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .copy-badge {
+            font-size: 0.725rem;
+            color: var(--primary);
+            background: rgba(0, 229, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Contact Form Card */
+        .contact-form-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            background: rgba(11, 17, 30, 0.8);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.875rem;
+            transition: var(--transition-base);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+        .footer {
+            text-align: center;
+            padding: 30px 20px 40px;
+            font-size: 0.825rem;
+            color: var(--text-dim);
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: var(--primary);
+        }
+
+        /* ==========================================================================
+       MODAL SYSTEM (RESUME & PROJECT DETAILS)
+       ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 10, 20, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            max-width: 820px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+            position: relative;
+            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalPop {
+            from {
+                transform: scale(0.92) translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--bg-card);
+            z-index: 10;
+        }
+
+        .modal-close-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .modal-close-btn:hover {
+            background: #ef4444;
+            border-color: #ef4444;
+        }
+
+        .modal-content {
+            padding: 24px;
+        }
+
+        /* Toast Notification */
+        .toast-msg {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--bg-card-elevated);
+            border: 1px solid var(--primary);
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--primary-glow);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .toast-msg.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+       MOBILE RESPONSIVENESS & BREAKPOINTS
+       Desktop: Bento 2-column layout.
+       Mobile: Clean stack, top sticky bar, bottom dock, touch-friendly tap targets!
+       ========================================================================== */
+        .mobile-header {
+            display: none;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 17, 30, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 18px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mobile-logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1.5px solid var(--primary);
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .mobile-logo-text {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .mobile-hamburger {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        /* Mobile Bottom Quick Dock */
+        .mobile-bottom-dock {
+            display: none;
+            position: fixed;
+            bottom: 12px;
+            left: 16px;
+            right: 16px;
+            z-index: 900;
+            background: rgba(16, 25, 43, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            border-radius: var(--radius-full);
+            padding: 8px 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .dock-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            font-weight: 600;
+        }
+
+        .dock-link svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+        }
+
+        .dock-link:hover,
+        .dock-link.active {
+            color: var(--primary);
+        }
+
+        /* Screen Queries */
+        @media (max-width: 1120px) {
+            .app-container {
+                grid-template-columns: 280px 1fr;
+                gap: 20px;
+                padding: 16px;
+            }
+
+            .toolkit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-bento {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+
+            .hero-visual-frame {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .mobile-header {
+                display: flex;
+            }
+
+            .mobile-bottom-dock {
+                display: flex;
+            }
+
+            .app-container {
+                grid-template-columns: 1fr;
+                padding: 14px;
+                padding-bottom: 90px;
+                /* Room for bottom dock */
+            }
+
+            .sidebar {
+                display: none;
+                /* Collapses into mobile drawer / bottom dock */
+            }
+
+            .sidebar.mobile-open {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 1050;
+                border-radius: 0;
+                padding: 24px;
+            }
+
+            .services-grid,
+            .timeline-grid,
+            .certs-grid,
+            .contact-bento-grid,
+            .vol-grid-details {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+                padding: 22px;
+            }
+
+            .project-action {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+
+            .hero-bento {
+                padding: 24px 20px;
+            }
+
+            .floating-metric.top-left {
+                left: 0;
+                top: 0;
+            }
+
+            .floating-metric.bottom-right {
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-heading {
+                font-size: 1.85rem;
+            }
+
+            .stat-number {
+                font-size: 1.6rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 14px;
+            }
+
+            .portrait-card {
+                width: 220px;
+                height: 280px;
+            }
+
+            .toolkit-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Tech Grid Background Pattern -->
+    <div class="bg-grid-overlay"></div>
+
+    <!-- Mobile Top Bar -->
+    <header class="mobile-header">
+        <div class="mobile-logo">
+            <img src="images/profile-formal.jpg" alt="Marc Johnraye Pascua"
+                onerror="this.src='images/profile-casual.jpg'">
+            <div>
+                <div class="mobile-logo-text">Marc Johnraye Pascua</div>
+                <div style="font-size: 0.7rem; color: var(--primary);">IT Specialist & DB Engineer</div>
+            </div>
+        </div>
+        <button class="mobile-hamburger" id="mobileMenuBtn" aria-label="Toggle Navigation">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Main Grid App Container -->
+    <div class="app-container">
+
+        <!-- ====================================================================
+         LEFT COLUMN: BENTO PROFILE & NAV SIDEBAR (STICKY ON DESKTOP)
+         ==================================================================== -->
+        <aside class="sidebar" id="sidebarNav">
+            <!-- Close button on mobile -->
+            <div style="display: none; justify-content: flex-end; margin-bottom: 10px;" id="sidebarCloseWrapper">
+                <button class="modal-close-btn" id="sidebarCloseBtn" aria-label="Close Menu">✕</button>
+            </div>
+
+            <!-- Profile Avatar & Details -->
+            <div class="profile-widget">
+                <div class="avatar-wrapper" id="avatarToggleBtn" title="Click to switch photo!">
+                    <img src="images/profile-formal.jpg" id="sidebarAvatarImg" alt="Marc Johnraye Pascua"
+                        class="avatar-img" onerror="this.src='images/profile-casual.jpg'">
+                    <div class="status-indicator" title="Active & Available for Projects"></div>
+                </div>
+                <h1 class="profile-name">Marc Johnraye D. Pascua</h1>
+                <div class="profile-role">IT & Database Systems Specialist</div>
+                <div class="profile-badge">
+                    <span class="badge-dot"></span>
+                    BSIT @ NEUST (Class of '27)
+                </div>
+
+                <!-- Social Icons Row -->
+                <div class="social-pills">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/search/top?q=Johnraye%20Pascua" target="_blank"
+                        rel="noopener noreferrer" class="social-btn" title="Facebook: Johnraye Pascua">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                        </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/jinx.zenin_" target="_blank" rel="noopener noreferrer"
+                        class="social-btn" title="Instagram: @jinx.zenin_">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/marc-johnraye-pascua" target="_blank" rel="noopener noreferrer"
+                        class="social-btn" title="LinkedIn: Marc Johnraye Pascua">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <!-- Phone Call -->
+                    <a href="tel:09916861271" class="social-btn" title="Call Mobile: 09916861271">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                    </a>
+                    <!-- Email -->
+                    <a href="mailto:johnrayepascua8@gmail.com" class="social-btn"
+                        title="Email: johnrayepascua8@gmail.com">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Sidebar CTA Buttons -->
+                <div class="sidebar-actions">
+                    <a href="#contact" class="btn btn-primary">Hire Me</a>
+                    <button class="btn btn-outline" id="viewResumeBtn">View CV</button>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item active"><a href="#home">
+                            <svg>
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            Home Overview
+                        </a></li>
+                    <li class="nav-item"><a href="#services">
+                            <svg>
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                            Specializations
+                        </a></li>
+                    <li class="nav-item"><a href="#projects">
+                            <svg>
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                            Featured Projects
+                        </a></li>
+                    <li class="nav-item"><a href="#toolkit">
+                            <svg>
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                </path>
+                            </svg>
+                            Technical Toolkit
+                        </a></li>
+                    <li class="nav-item"><a href="#experience">
+                            <svg>
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                                </path>
+                            </svg>
+                            Experience & Education
+                        </a></li>
+                    <li class="nav-item"><a href="#volunteering">
+                            <svg>
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                            Aiahdvocacy 2024
+                        </a></li>
+                    <li class="nav-item"><a href="#terminal">
+                            <svg>
+                                <polyline points="4 17 10 11 4 5"></polyline>
+                                <line x1="12" y1="19" x2="20" y2="19"></line>
+                            </svg>
+                            IT Terminal Console
+                        </a></li>
+                    <li class="nav-item"><a href="#contact">
+                            <svg>
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            Get In Touch
+                        </a></li>
+                </ul>
+            </nav>
+
+            <!-- Sidebar Footer Contacts -->
+            <div class="sidebar-contact-info">
+                <div class="contact-item" title="Primary Mobile">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                    <span>0991 686 1271</span>
+                </div>
+                <div class="contact-item" title="Location">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>Bongabon, Nueva Ecija</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ====================================================================
+         RIGHT COLUMN: MAIN BENTO DISPLAY & PORTFOLIO CONTENT
+         ==================================================================== -->
+        <main class="main-content">
+
+            <!-- ================================================================
+           HERO BENTO CARD SECTION
+           ================================================================ -->
+            <section id="home" class="hero-bento">
+                <div>
+                    <div class="hero-tagline">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                        Information Technology Specialist • Database Architecture
+                    </div>
+                    <h1 class="hero-heading">
+                        Engineering <span class="gradient-text">Scalable Databases</span> & Community-Driven Systems.
+                    </h1>
+                    <p class="hero-desc">
+                        Detail-oriented Information Technology student at Nueva Ecija University of Science and
+                        Technology (NEUST) specializing in <strong>Database Systems Technology</strong>. Passionate
+                        about transforming community workflows through robust databases, clean application logic, and
+                        full-cycle system development.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="btn btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                            Explore My Projects
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            Contact Me (09916861271)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Portrait Card with Floating Badges -->
+                <div class="hero-visual-frame">
+                    <!-- Floating badge 1 -->
+                    <div class="floating-metric top-left">
+                        <div class="metric-icon-box">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                        </div>
+                        <div class="metric-data">
+                            <h4>SQL & DB Specialist</h4>
+                            <span>Query Optimization</span>
+                        </div>
+                    </div>
+
+                    <!-- The Portrait Container -->
+                    <div class="portrait-card" id="mainHeroPortrait">
+                        <img src="images/profile-formal.jpg" id="heroPortraitImg" alt="Marc Johnraye Pascua"
+                            onerror="this.src='images/profile-casual.jpg'">
+                        <div class="portrait-overlay-badge">
+                            <div>
+                                <strong style="color: #ffffff; display: block;">Johnraye Pascua</strong>
+                                <span style="color: var(--text-muted); font-size: 0.68rem;">Database & Software
+                                    Dev</span>
+                            </div>
+                            <button class="portrait-toggle-btn" id="heroPhotoSwitchBtn">Switch Look</button>
+                        </div>
+                    </div>
+
+                    <!-- Floating badge 2 -->
+                    <div class="floating-metric bottom-right">
+                        <div class="metric-icon-box"
+                            style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="metric-data">
+                            <h4>Capstone Lead Dev</h4>
+                            <span>Geo-Track & BARMS</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================================================================
+           STATS BENTO GRID (COUNTERS)
+           ================================================================ -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">03<span>+</span></div>
+                    <div class="stat-label">Core IT Systems Developed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">04<span>+</span></div>
+                    <div class="stat-label">Industry Certifications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100<span>%</span></div>
+                    <div class="stat-label">Data Integrity & QA Focus</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2027<span>🎓</span></div>
+                    <div class="stat-label">NEUST BSIT Degree Target</div>
+                </div>
+            </section>
+
+            <!-- ================================================================
+           CORE SERVICES & IT SPECIALTIES (INSPIRED BY REFERENCE DESIGN)
+           ================================================================ -->
+            <section id="services">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10" />
+                            </svg>
+                            My Core Services
+                        </div>
+                        <h2 class="section-title">Architecting Modern IT & Data Solutions</h2>
+                    </div>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card">
+                        <div class="service-card-top">
+                            <span class="service-num">[ 001 ]</span>
+                            <div class="service-icon-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="service-title">Database Engineering & Optimization</h3>
+                        <p class="service-desc">
+                            Designing 3NF normalized relational schemas, optimizing complex SQL queries, structuring
+                            robust table indices, and architecting data persistence workflows for secure transactional
+                            integrity.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag-chip">SQL / MySQL</span>
+                            <span class="tag-chip">Schema Normalization</span>
+                            <span class="tag-chip">Query Optimization</span>
+                            <span class="tag-chip">ERD Modeling</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-card">
+                        <div class="service-card-top">
+                            <span class="service-num">[ 002 ]</span>
+                            <div class="service-icon-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="service-title">Full-Cycle Application & Systems Dev</h3>
+                        <p class="service-desc">
+                            Leading the architecture and implementation of responsive information systems, capstone
+                            public monitoring tools, and automated enterprise management software with clean MVC
+                            structure.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag-chip">Python</span>
+                            <span class="tag-chip">JavaScript / Web</span>
+                            <span class="tag-chip">REST APIs</span>
+                            <span class="tag-chip">System Architecture</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-card">
+                        <div class="service-card-top">
+                            <span class="service-num">[ 003 ]</span>
+                            <div class="service-icon-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="service-title">Operating System & Technical IT Support</h3>
+                        <p class="service-desc">
+                            Configuring OS environments (Windows/Linux), administering local workstations,
+                            troubleshooting network connectivity, and providing robust technical problem solving for
+                            institutional operations.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag-chip">OS Support</span>
+                            <span class="tag-chip">Hardware Diagnostics</span>
+                            <span class="tag-chip">Workstation Deployment</span>
+                            <span class="tag-chip">Network Basics</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="service-card">
+                        <div class="service-card-top">
+                            <span class="service-num">[ 004 ]</span>
+                            <div class="service-icon-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="service-title">Data Integrity, QA & Government Immersion</h3>
+                        <p class="service-desc">
+                            Hands-on experience with LGU municipal databases: processing high-volume transactions,
+                            identifying and mitigating duplicate entries, auditing record accuracy, and streamlining
+                            cross-departmental assets.
+                        </p>
+                        <div class="service-tags">
+                            <span class="tag-chip">Data Cleansing</span>
+                            <span class="tag-chip">Quality Assurance</span>
+                            <span class="tag-chip">LGU Record Systems</span>
+                            <span class="tag-chip">Audit Trails</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================================================================
+           FEATURED PROJECTS (GEO-TRACK, BARANGAY SYSTEM, RESTAURANT RMS)
+           ================================================================ -->
+            <section id="projects">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                            Featured Works & Systems
+                        </div>
+                        <h2 class="section-title">Production-Grade IT Projects</h2>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">
+                        Real-world systems engineered for local governance, community monitoring, and commercial
+                        operations.
+                    </p>
+                </div>
+
+                <div class="projects-container">
+
+                    <!-- PROJECT 1: Geo-Track (Capstone Lead) -->
+                    <article class="project-card featured">
+                        <div>
+                            <div class="project-meta-pill">
+                                ● Capstone Lead Developer • Mar 2025 – Oct 2026
+                            </div>
+                            <h3 class="project-title">Geo-Track: A Community Infrastructure Reporting and Monitoring
+                                System</h3>
+                            <p class="project-desc">
+                                A public-facing civic-tech platform that empowers citizens and local municipal engineers
+                                to report, map, track, and resolve community infrastructure anomalies (damaged roadways,
+                                hazardous electrical lines, drainage failures) using geospatial tagging and live status
+                                dispatch boards.
+                            </p>
+                            <div class="project-highlights">
+                                <div class="highlight-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span><strong>Team Leadership:</strong> Orchestrated agile sprint planning, testing
+                                        phases, and coordinated deployment goals across the engineering squad.</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span><strong>Geospatial Integration:</strong> Interactive coordinate mapping with
+                                        automated status updates from initial dispatch to resolved verification.</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span><strong>Database Architecture:</strong> Engineered high-reliability relational
+                                        tables with foreign keys handling image uploads and incident timestamps.</span>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Database Engineering</span>
+                                <span class="tech-pill">SQL / MySQL</span>
+                                <span class="tech-pill">Geospatial Mapping</span>
+                                <span class="tech-pill">REST APIs</span>
+                                <span class="tech-pill">QA & Automated Tests</span>
+                                <span class="tech-pill">Agile Leadership</span>
+                            </div>
+                        </div>
+                        <div class="project-action">
+                            <button class="action-circle-btn" onclick="openProjectModal('geotrack')"
+                                title="View Technical Specs & Schema">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                </svg>
+                            </button>
+                            <span style="font-size: 0.72rem; color: var(--text-muted);">View Architecture</span>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 2: Barangay Accomplishment, Reporting & Monitoring System (BARMS) -->
+                    <article class="project-card">
+                        <div>
+                            <div class="project-meta-pill"
+                                style="color: #38ef7d; background: rgba(56, 239, 125, 0.08);">
+                                ● E-Governance & Administrative Suite • Lead Developer
+                            </div>
+                            <h3 class="project-title">Barangay Accomplishment, Reporting and Monitoring System (BARMS)
+                            </h3>
+                            <p class="project-desc">
+                                An end-to-end digital administrative portal designed specifically for Philippine
+                                Barangay governance. Digitizes resident profiling, blotter and dispute tracking,
+                                automated barangay clearance generation, project accomplishment analytics, and financial
+                                auditing with tamper-proof transaction logs.
+                            </p>
+                            <div class="project-highlights">
+                                <div class="highlight-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span><strong>80% Time Reduction:</strong> Replaced slow paper logs with instant
+                                        one-click barangay certificate and clearance generation with QR codes.</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span><strong>Role-Based Access Control (RBAC):</strong> Strict administrative
+                                        security partitions for Barangay Captain, Secretary, Treasurer, and Tanod
+                                        officers.</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span><strong>Accomplishment Metrics:</strong> Dynamic visual dashboards summarizing
+                                        completed community outreach and budget utilization for LGU oversight.</span>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Relational DB</span>
+                                <span class="tech-pill">PHP / Node.js</span>
+                                <span class="tech-pill">MySQL Engine</span>
+                                <span class="tech-pill">RBAC Security</span>
+                                <span class="tech-pill">PDF Exporter</span>
+                                <span class="tech-pill">Data Auditing</span>
+                            </div>
+                        </div>
+                        <div class="project-action">
+                            <button class="action-circle-btn" onclick="openProjectModal('barms')"
+                                title="View Technical Specs & Schema">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                </svg>
+                            </button>
+                            <span style="font-size: 0.72rem; color: var(--text-muted);">View Architecture</span>
+                        </div>
+                    </article>
+
+                    <!-- PROJECT 3: Restaurant Management System (RMS) -->
+                    <article class="project-card">
+                        <div>
+                            <div class="project-meta-pill"
+                                style="color: #f59e0b; background: rgba(245, 158, 11, 0.08);">
+                                ● Commercial Point of Sale & Inventory • System Architect
+                            </div>
+                            <h3 class="project-title">Modern Restaurant Management System (RMS)</h3>
+                            <p class="project-desc">
+                                A high-speed Point-of-Sale (POS), dine-in table status mapper, real-time Kitchen Display
+                                System (KDS), and inventory replenishment tracker. Automates order dispatching to
+                                kitchen stations while simultaneously deducting ingredient counts to prevent stock-outs.
+                            </p>
+                            <div class="project-highlights">
+                                <div class="highlight-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span><strong>Real-time Synchronized Orders:</strong> Front-of-house waitstaff
+                                        tablets synchronize instantly with kitchen display monitors.</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span><strong>Automated Stock Depletion:</strong> Recipe-based inventory deduction
+                                        with low-threshold triggers alerting kitchen managers immediately.</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span><strong>Sales Analytics & Reporting:</strong> Daily gross/net revenue
+                                        breakdown, top-selling dishes, peak dining hours, and cashier end-of-shift
+                                        audits.</span>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Python Backend</span>
+                                <span class="tech-pill">Database Transactions</span>
+                                <span class="tech-pill">Inventory Controls</span>
+                                <span class="tech-pill">POS Hardware Support</span>
+                                <span class="tech-pill">Data Integrity</span>
+                            </div>
+                        </div>
+                        <div class="project-action">
+                            <button class="action-circle-btn" onclick="openProjectModal('rms')"
+                                title="View Technical Specs & Schema">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                </svg>
+                            </button>
+                            <span style="font-size: 0.72rem; color: var(--text-muted);">View Architecture</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ================================================================
+           TECHNICAL TOOLKIT & SKILL PROFICIENCY (INSPIRED BY REFERENCE DESIGN)
+           ================================================================ -->
+            <section id="toolkit">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            My Technical Arsenal
+                        </div>
+                        <h2 class="section-title">Proficiency & Development Stack</h2>
+                    </div>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Benchmarked through coursework,
+                        certifications, and live production code.</span>
+                </div>
+
+                <div class="toolkit-grid">
+                    <!-- Tool 1: SQL & Databases -->
+                    <div class="tool-card">
+                        <div class="tool-icon-wrapper" style="color: var(--primary);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                        </div>
+                        <div class="tool-name">SQL & Databases</div>
+                        <div class="tool-category">MySQL, Schema Design, Tuning</div>
+                        <div class="skill-pct">95%</div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tool 2: Python -->
+                    <div class="tool-card">
+                        <div class="tool-icon-wrapper" style="color: #3b82f6;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M12 2a4 4 0 0 0-4 4v2h8V6a4 4 0 0 0-4-4zM6 8a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4h2v-8H6zm12 0h-2v8h2a4 4 0 0 0 4-4v-4a4 4 0 0 0-4-4zm-6 8a4 4 0 0 0-4 4v2h8v-2a4 4 0 0 0-4-4z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="tool-name">Python Systems</div>
+                        <div class="tool-category">App Development & Logic</div>
+                        <div class="skill-pct">90%</div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tool 3: Web Technologies -->
+                    <div class="tool-card">
+                        <div class="tool-icon-wrapper" style="color: #f59e0b;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="tool-name">Web & Responsive UI</div>
+                        <div class="tool-category">HTML5, CSS3, JS, PHP</div>
+                        <div class="skill-pct">88%</div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-fill" style="width: 88%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tool 4: Google Gemini & AI -->
+                    <div class="tool-card">
+                        <div class="tool-icon-wrapper" style="color: #a855f7;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14" />
+                            </svg>
+                        </div>
+                        <div class="tool-name">AI & Google Gemini</div>
+                        <div class="tool-category">Certified AI Tools & Prompts</div>
+                        <div class="skill-pct">92%</div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-fill" style="width: 92%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tool 5: OS & Hardware Support -->
+                    <div class="tool-card">
+                        <div class="tool-icon-wrapper" style="color: #06b6d4;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                            </svg>
+                        </div>
+                        <div class="tool-name">Operating Systems</div>
+                        <div class="tool-category">Windows/Linux, Maintenance</div>
+                        <div class="skill-pct">89%</div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-fill" style="width: 89%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tool 6: Data Integrity & QA -->
+                    <div class="tool-card">
+                        <div class="tool-icon-wrapper" style="color: #10b981;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="tool-name">Data Auditing & QA</div>
+                        <div class="tool-category">LGU Immersion & Error Audits</div>
+                        <div class="skill-pct">96%</div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-fill" style="width: 96%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tool 7: System Designing -->
+                    <div class="tool-card">
+                        <div class="tool-icon-wrapper" style="color: #ec4899;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M16 12l-4-4-4 4"></path>
+                                <path d="M12 16V8"></path>
+                            </svg>
+                        </div>
+                        <div class="tool-name">System Designing</div>
+                        <div class="tool-category">Workflows, Architecture, ERD</div>
+                        <div class="skill-pct">91%</div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-fill" style="width: 91%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tool 8: Git & Collaboration -->
+                    <div class="tool-card">
+                        <div class="tool-icon-wrapper" style="color: #f97316;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="18" r="3"></circle>
+                                <circle cx="6" cy="6" r="3"></circle>
+                                <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+                                <line x1="6" y1="9" x2="6" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div class="tool-name">Git & Team Collab</div>
+                        <div class="tool-category">Version Control & Agile</div>
+                        <div class="skill-pct">87%</div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-fill" style="width: 87%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================================================================
+           COMMUNITY & VOLUNTEERING: AIAHDVOCACY 2024 (SPECIAL FEATURE)
+           ================================================================ -->
+            <section id="volunteering">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag" style="color: #f472b6;">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            Social Responsibility & Volunteering
+                        </div>
+                        <h2 class="section-title">Community Outreach: Aiahdvocacy 2024</h2>
+                    </div>
+                    <span style="font-size: 0.85rem; color: #f9a8d4;">"Sharing blessings, giving back to communities,
+                        and inspiring acts of service."</span>
+                </div>
+
+                <div class="volunteering-bento">
+                    <div class="vol-badge-group">
+                        <span class="vol-tag-pink">Aiahdvocacy 2024 Volunteer & Advocate</span>
+                        <span class="vol-tag-date">Sep 2024 – Dec 2024 ("Ber" Months)</span>
+                        <span class="vol-tag-date" style="color: #6ee7b7;">● Active Civic Participation</span>
+                    </div>
+
+                    <h3 class="vol-title">BINI Aiah's Charitable Initiative (Maraiah Queen Arceta)</h3>
+
+                    <blockquote class="vol-lead-quote">
+                        "Aiahdvocacy 2024 was an inspiring outreach and charitable initiative led by BINI Aiah (Maraiah
+                        Queen Arceta) spanning from September to December 2024 ('Ber' months). Its mission was grounded
+                        in sharing blessings, uplifting underserved communities, and kindling a passionate culture of
+                        service among youth."
+                    </blockquote>
+
+                    <div class="vol-grid-details">
+                        <!-- Box 1 -->
+                        <div class="vol-box">
+                            <div class="vol-box-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                September 2024 Kickoff: Tondo, Manila
+                            </div>
+                            <p>
+                                Kicked off the advocacy run by visiting underprivileged children in Tondo, Manila.
+                                Actively participated in distributing nourishing food packs, essential care goods, and
+                                educational materials to brighten their day.
+                            </p>
+                        </div>
+
+                        <!-- Box 2 -->
+                        <div class="vol-box">
+                            <div class="vol-box-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                                </svg>
+                                DIY Chalk Art & Creative Activities
+                            </div>
+                            <p>
+                                Organized and guided fun interactive recreational activities for youth, including
+                                vibrant DIY chalk art sessions, creative games, and mentorship circles designed to
+                                nurture self-expression and community solidarity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================================================================
+           WORK IMMERSION & EDUCATION TIMELINE
+           ================================================================ -->
+            <section id="experience">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10" />
+                            </svg>
+                            My Journey & Track Record
+                        </div>
+                        <h2 class="section-title">Work Experience & Academic Background</h2>
+                    </div>
+                </div>
+
+                <div class="timeline-grid">
+                    <!-- Column 1: Experience -->
+                    <div class="timeline-column">
+                        <h3 class="timeline-col-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            Work Experience
+                        </h3>
+
+                        <div class="timeline-list">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">Jun 2023 – Jul 2023 | Bongabon, Nueva Ecija</div>
+                                <div class="timeline-role">Data Entry Specialist (Work Immersion)</div>
+                                <div class="timeline-institution">Local Government Unit (LGU Bongabon)</div>
+                                <div class="timeline-desc">
+                                    • Accurately processed and encoded high-volume daily transactions and citizen
+                                    records into central municipal databases.<br>
+                                    • Maintained database integrity by systematically cross-referencing and correcting
+                                    duplicate or corrupted entries.<br>
+                                    • Collaborated across internal LGU departments to streamline digital workflow
+                                    access.<br>
+                                    • Supported quality assurance audits on data input protocols to maintain consistent
+                                    accuracy.
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-dot" style="background: var(--accent-emerald);"></div>
+                                <div class="timeline-date">Mar 2025 – Present | Nueva Ecija</div>
+                                <div class="timeline-role">Capstone Project Lead Developer</div>
+                                <div class="timeline-institution">NEUST Research & Development</div>
+                                <div class="timeline-desc">
+                                    • Heading the architectural design, database modeling, and team deployment for the
+                                    Geo-Track Community Infrastructure Monitoring System.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Education -->
+                    <div class="timeline-column">
+                        <h3 class="timeline-col-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                            </svg>
+                            Education Background
+                        </h3>
+
+                        <div class="timeline-list">
+                            <!-- College -->
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">Aug 2023 – Present | Cabanatuan City, Nueva Ecija</div>
+                                <div class="timeline-role">Bachelor of Science in Information Technology</div>
+                                <div class="timeline-institution">Nueva Ecija University of Science and Technology
+                                    (NEUST)</div>
+                                <div class="timeline-desc">
+                                    Specialization in Database Systems Technology. Focusing on Advanced SQL, Information
+                                    Security, Systems Analysis & Design, and Enterprise Software Engineering.
+                                </div>
+                            </div>
+
+                            <!-- Senior High -->
+                            <div class="timeline-item">
+                                <div class="timeline-dot" style="background: var(--secondary);"></div>
+                                <div class="timeline-date">Sep 2021 – Jul 2023 | Bongabon, Nueva Ecija</div>
+                                <div class="timeline-role">Senior High School Graduate</div>
+                                <div class="timeline-institution">Bongabon Senior High School</div>
+                                <div class="timeline-desc">
+                                    Completed senior high education with strong academic focus on technical
+                                    fundamentals, computer operations, and work immersion honors.
+                                </div>
+                            </div>
+
+                            <!-- Secondary -->
+                            <div class="timeline-item">
+                                <div class="timeline-dot" style="background: var(--accent-purple);"></div>
+                                <div class="timeline-date">Jun 2017 – Apr 2021 | Bongabon, Nueva Ecija</div>
+                                <div class="timeline-role">Junior Secondary High School</div>
+                                <div class="timeline-institution">Bongabon Essential School</div>
+                                <div class="timeline-desc">
+                                    Secondary school foundation developing core mathematics, sciences, and early
+                                    computing logic.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================================================================
+           CERTIFICATIONS & PROFESSIONAL CREDENTIALS
+           ================================================================ -->
+            <section id="certifications">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10" />
+                            </svg>
+                            Credentials & Honors
+                        </div>
+                        <h2 class="section-title">Verified Certifications</h2>
+                    </div>
+                    <button class="btn btn-outline" style="font-size: 0.75rem; padding: 6px 12px;"
+                        onclick="openResumeModal()">
+                        View Full Resume
+                    </button>
+                </div>
+
+                <div class="certs-grid">
+                    <!-- Cert 1 -->
+                    <div class="cert-card">
+                        <div class="cert-badge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Learning Advocate 2026 Series</h4>
+                            <p>Emerging IT Innovations Certificate • Advanced Tech Insights</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="cert-card">
+                        <div class="cert-badge-icon"
+                            style="color: #a855f7; border-color: rgba(168, 85, 247, 0.3); background: rgba(168, 85, 247, 0.08);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14" />
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h4>AI Tools 101: Masterclass</h4>
+                            <p>How to Use Google Gemini Like a Pro • Prompt Engineering & Logic</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="cert-card">
+                        <div class="cert-badge-icon"
+                            style="color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.08);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Database 101: Data Storage</h4>
+                            <p>SQL & Query Optimization • Relational Structure & Normalization</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div class="cert-card">
+                        <div class="cert-badge-icon"
+                            style="color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.08);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Information Technology Specialist</h4>
+                            <p>Specialization in Databases • Enterprise Storage & Schema Standards</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================================================================
+           INTERACTIVE IT CONSOLE / TERMINAL (CREATIVE IT FEATURE)
+           ================================================================ -->
+            <section id="terminal">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <polyline points="4 17 10 11 4 5"></polyline>
+                            </svg>
+                            Live Developer Console
+                        </div>
+                        <h2 class="section-title">Interactive IT System Terminal</h2>
+                    </div>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Run simulated system diagnostics or
+                        click commands below:</span>
+                </div>
+
+                <div class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="tdot tdot-red"></span>
+                            <span class="tdot tdot-yellow"></span>
+                            <span class="tdot tdot-green"></span>
+                        </div>
+                        <div class="terminal-title">bash — marc@pascua-server: ~ (v2.6)</div>
+                        <div style="font-size: 0.7rem; color: var(--accent-emerald);">● ONLINE</div>
+                    </div>
+
+                    <div class="terminal-body" id="termOutput">
+                        <div class="terminal-line"><span class="term-prompt">user@neust-system:~$</span> <span
+                                class="term-cmd">neofetch --portfolio</span></div>
+                        <div class="terminal-line"><span
+                                class="term-success">===============================================================</span>
+                        </div>
+                        <div class="terminal-line" style="color: var(--primary);">Developer: <strong>Marc Johnraye D.
+                                Pascua</strong></div>
+                        <div class="terminal-line">Role: BSIT Database Specialist & Lead Capstone Developer</div>
+                        <div class="terminal-line">Campus: Nueva Ecija University of Science and Technology (NEUST)
+                        </div>
+                        <div class="terminal-line">Status: Ready for Capstone Collaborations, Internships & Freelance IT
+                        </div>
+                        <div class="terminal-line"><span
+                                class="term-success">===============================================================</span>
+                        </div>
+                        <div class="terminal-line" style="color: var(--text-dim); font-size: 0.78rem;">Type or click a
+                            command below: 'skills', 'projects', 'contacts', 'aiahdvocacy', 'clear'</div>
+                    </div>
+
+                    <div class="terminal-controls">
+                        <button class="term-pill-btn" onclick="runTermCommand('skills')">$ skills</button>
+                        <button class="term-pill-btn" onclick="runTermCommand('projects')">$ projects</button>
+                        <button class="term-pill-btn" onclick="runTermCommand('aiahdvocacy')">$ aiahdvocacy</button>
+                        <button class="term-pill-btn" onclick="runTermCommand('contact')">$ contact</button>
+                        <button class="term-pill-btn" onclick="runTermCommand('clear')">$ clear</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================================================================
+           CONTACT & CONNECT BENTO SECTION
+           ================================================================ -->
+            <section id="contact">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            Direct Communications
+                        </div>
+                        <h2 class="section-title">Let's Connect & Collaborate</h2>
+                    </div>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Available via Mobile, Facebook,
+                        Instagram, or Email.</span>
+                </div>
+
+                <div class="contact-bento-grid">
+                    <!-- Left: Direct Interactive Contact Links -->
+                    <div class="contact-methods">
+                        <!-- Mobile Phone -->
+                        <div class="contact-card-link"
+                            onclick="copyToClipboard('09916861271', 'Phone Number (09916861271)')"
+                            style="cursor: pointer;">
+                            <div class="contact-card-left">
+                                <div class="contact-icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="contact-label">Mobile Hotline / SMS</div>
+                                    <div class="contact-val">0991 686 1271</div>
+                                    <div style="font-size: 0.7rem; color: var(--text-dim);">Alt: +63 921 759 1621</div>
+                                </div>
+                            </div>
+                            <span class="copy-badge">Tap to Copy</span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="contact-card-link"
+                            onclick="copyToClipboard('johnrayepascua8@gmail.com', 'Email (johnrayepascua8@gmail.com)')"
+                            style="cursor: pointer;">
+                            <div class="contact-card-left">
+                                <div class="contact-icon-box"
+                                    style="color: #3b82f6; border-color: rgba(59, 130, 246, 0.25);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="contact-label">Email Address</div>
+                                    <div class="contact-val">johnrayepascua8@gmail.com</div>
+                                </div>
+                            </div>
+                            <span class="copy-badge">Tap to Copy</span>
+                        </div>
+
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/search/top?q=Johnraye%20Pascua" target="_blank"
+                            rel="noopener noreferrer" class="contact-card-link">
+                            <div class="contact-card-left">
+                                <div class="contact-icon-box"
+                                    style="color: #1877f2; border-color: rgba(24, 119, 242, 0.25);">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="contact-label">Facebook Profile</div>
+                                    <div class="contact-val">Johnraye Pascua</div>
+                                </div>
+                            </div>
+                            <span class="copy-badge">Open Profile ↗</span>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://instagram.com/jinx.zenin_" target="_blank" rel="noopener noreferrer"
+                            class="contact-card-link">
+                            <div class="contact-card-left">
+                                <div class="contact-icon-box"
+                                    style="color: #e1306c; border-color: rgba(225, 48, 108, 0.25);">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="contact-label">Instagram Handle</div>
+                                    <div class="contact-val">@jinx.zenin_</div>
+                                </div>
+                            </div>
+                            <span class="copy-badge">Follow ↗</span>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/marc-johnraye-pascua" target="_blank"
+                            rel="noopener noreferrer" class="contact-card-link">
+                            <div class="contact-card-left">
+                                <div class="contact-icon-box"
+                                    style="color: #0077b5; border-color: rgba(0, 119, 181, 0.25);">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="contact-label">LinkedIn Network</div>
+                                    <div class="contact-val">marc-johnraye-pascua</div>
+                                </div>
+                            </div>
+                            <span class="copy-badge">Connect ↗</span>
+                        </a>
+                    </div>
+
+                    <!-- Right: Interactive Quick Message Dispatch Form -->
+                    <form class="contact-form-box" id="contactForm" onsubmit="handleContactSubmit(event)">
+                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff;">Send a Fast Dispatch</h3>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">
+                            Looking for a database engineer, capstone developer, or IT support? Drop a message here:
+                        </p>
+
+                        <div class="form-group">
+                            <label for="senderName">Your Name / Organization</label>
+                            <input type="text" id="senderName" class="form-input"
+                                placeholder="e.g. Engr. Dela Cruz / NEUST / Barangay Hall" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="senderContact">Your Email or Contact Number</label>
+                            <input type="text" id="senderContact" class="form-input"
+                                placeholder="e.g. 09123456789 or user@gmail.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="messageBody">Project Details / Message</label>
+                            <textarea id="messageBody" class="form-textarea"
+                                placeholder="Describe the IT system, database optimization, or opportunity..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="margin-top: 6px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            Transmit Dispatch
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- ================================================================
+           FOOTER
+           ================================================================ -->
+            <footer class="footer">
+                <p>© 2026</p>
+                <p style="margin-top: 4px;">
+                    Bongabon, Nueva Ecija, Philippines • <a href="tel:09916861271">09916861271</a> •
+                    <a href="https://instagram.com/jinx.zenin_" target="_blank"
+                        rel="noopener noreferrer">@jinx.zenin_</a>
+                    •
+                    <a href="mailto:johnrayepascua8@gmail.com">johnrayepascua8@gmail.com</a>
+                </p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- ====================================================================
+       MOBILE BOTTOM QUICK DOCK (TOUCH ACCESSIBLE ON PHONES)
+       ==================================================================== -->
+    <nav class="mobile-bottom-dock" aria-label="Mobile Navigation Dock">
+        <a href="#home" class="dock-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="#projects" class="dock-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+            </svg>
+            <span>Projects</span>
+        </a>
+        <a href="#toolkit" class="dock-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+                </path>
+            </svg>
+            <span>Skills</span>
+        </a>
+        <a href="#volunteering" class="dock-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+            </svg>
+            <span>Aiahdvocacy</span>
+        </a>
+        <a href="#contact" class="dock-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+            </svg>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <!-- ====================================================================
+       INTERACTIVE MODALS: RESUME & DETAILED PROJECT ARCHITECTURE
+       ==================================================================== -->
+    <!-- 1. Resume Viewer Modal -->
+    <div class="modal-overlay" id="resumeModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: #ffffff;">Marc Johnraye D. Pascua — Official
+                        Resume</h3>
+                    <span style="font-size: 0.75rem; color: var(--primary);">Information Technology Specialist •
+                        Database Systems</span>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('resumeModal')">✕</button>
+            </div>
+            <div class="modal-content" style="text-align: center;">
+                <img src="images/resume-preview.jpg" alt="Marc Johnraye Pascua Resume Preview"
+                    style="max-width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+                <div style="margin-top: 18px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    <a href="images/resume-preview.jpg" download="Marc_Johnraye_Pascua_Resume.jpg"
+                        class="btn btn-primary">
+                        Download Resume Copy
+                    </a>
+                    <button class="btn btn-outline" onclick="closeModal('resumeModal')">Close Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Project Architecture Deep-Dive Modal -->
+    <div class="modal-overlay" id="projectDetailModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h3 id="modalProjectTitle" style="font-size: 1.25rem; font-weight: 800; color: #ffffff;">Project
+                        Title</h3>
+                    <span id="modalProjectBadge"
+                        style="font-size: 0.75rem; color: var(--primary); font-family: 'JetBrains Mono', monospace;">Category</span>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal('projectDetailModal')">✕</button>
+            </div>
+            <div class="modal-content" id="modalProjectContent">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+       TOAST NOTIFICATION ELEMENT
+       ==================================================================== -->
+    <div class="toast-msg" id="toastNotification">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="toastText">Information copied!</span>
+    </div>
+
+    <!-- ====================================================================
+       INTERACTIVE JAVASCRIPT LOGIC
+       ==================================================================== -->
+    <script>
+        // Project Database for Deep-Dive Modals
+        const projectSpecs = {
+            geotrack: {
+                title: "Geo-Track: Community Infrastructure Reporting System",
+                badge: "CAPSTONE LEAD DEVELOPER • MAR 2025 – OCT 2026",
+                html: `
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+              <strong>Geo-Track</strong> is designed to modernize how municipal local government units inspect, catalog, and fix public infrastructure. Citizens capture geo-tagged photos of defective roads, bridge cracks, or broken streetlights; the system extracts GPS coordinates and dispatches high-priority tickets directly to public works field engineers.
+            </p>
+            <div style="background: rgba(0, 229, 255, 0.05); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 12px; padding: 16px;">
+              <h4 style="color: var(--primary); font-size: 0.9rem; margin-bottom: 8px;">Key Architectural Highlights:</h4>
+              <ul style="color: #cbd5e1; font-size: 0.85rem; padding-left: 20px; line-height: 1.7;">
+                <li><strong>Geospatial Data Modeling:</strong> Normalized SQL tables storing latitude, longitude, reverse-geocoded barangay zones, and inspection timestamp clusters.</li>
+                <li><strong>Role-Based Dispatch:</strong> Automated ticket status lifecycle: <code>Reported ➜ Inspected ➜ Work Scheduled ➜ Repaired ➜ Publicly Verified</code>.</li>
+                <li><strong>Lead Developer Responsibilities:</strong> Spearheaded agile meetings, code reviews, schema migrations, and user acceptance testing with community test groups.</li>
+              </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="tech-pill">MySQL 8.0</span>
+              <span class="tech-pill">PHP / Node.js Engine</span>
+              <span class="tech-pill">Leaflet Map API</span>
+              <span class="tech-pill">RESTful Endpoints</span>
+              <span class="tech-pill">Responsive Mobile UI</span>
+            </div>
+          </div>
+        `
+            },
+            barms: {
+                title: "Barangay Accomplishment, Reporting and Monitoring System (BARMS)",
+                badge: "E-GOVERNANCE & LOCAL GOVT AUTOMATION",
+                html: `
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+              Born from hands-on work immersion experience inside a Local Government Unit (LGU Bongabon), <strong>BARMS</strong> addresses the chronic issue of sluggish paper-based record retrieval, manual blotter logbooks, and time-consuming barangay clearance processing.
+            </p>
+            <div style="background: rgba(56, 239, 125, 0.05); border: 1px solid rgba(56, 239, 125, 0.2); border-radius: 12px; padding: 16px;">
+              <h4 style="color: #38ef7d; font-size: 0.9rem; margin-bottom: 8px;">Core Capabilities & System Modules:</h4>
+              <ul style="color: #cbd5e1; font-size: 0.85rem; padding-left: 20px; line-height: 1.7;">
+                <li><strong>Automated Document Issuance:</strong> Generates Barangay Clearances, Indigency Certificates, and Residency Certificates with instant verification QR stamps.</li>
+                <li><strong>Blotter & Incident Records:</strong> Secure confidential tracking of peace & order disputes, hearings, and amicable settlement records with strict privacy audits.</li>
+                <li><strong>Barangay Accomplishment Reports:</strong> Visual breakdown of budget disbursement, disaster response drives, and completed community projects for municipal submission.</li>
+              </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="tech-pill">SQL Database Integrity</span>
+              <span class="tech-pill">RBAC Permissions</span>
+              <span class="tech-pill">PDF Document Engine</span>
+              <span class="tech-pill">Data Auditing</span>
+            </div>
+          </div>
+        `
+            },
+            rms: {
+                title: "Modern Restaurant Management System (RMS)",
+                badge: "COMMERCIAL POINT OF SALE & INVENTORY SUITE",
+                html: `
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+              A responsive, multi-terminal operational system built to minimize order wait times, synchronize dine-in table bills, and maintain razor-sharp inventory control for food service businesses.
+            </p>
+            <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 12px; padding: 16px;">
+              <h4 style="color: #f59e0b; font-size: 0.9rem; margin-bottom: 8px;">Key Modules:</h4>
+              <ul style="color: #cbd5e1; font-size: 0.85rem; padding-left: 20px; line-height: 1.7;">
+                <li><strong>Kitchen Display System (KDS):</strong> Eliminates lost handwritten order slips; kitchen staff view timed order tickets sorted by prep urgency.</li>
+                <li><strong>Recipe-Linked Inventory Deduction:</strong> Selling a meal automatically decrements raw ingredient quantities from the database in real-time.</li>
+                <li><strong>Financial Auditing & X/Z Reading:</strong> Generates end-of-shift cash drawer reconciliations, tax summaries, and daily peak sales analytics.</li>
+              </ul>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="tech-pill">Python Backend</span>
+              <span class="tech-pill">Database Transactions</span>
+              <span class="tech-pill">Thermal Receipt Output</span>
+              <span class="tech-pill">Real-Time Sync</span>
+            </div>
+          </div>
+        `
+            }
+        };
+
+        // Toggle Profile Photo State (Formal <-> Smart Casual)
+        let isCasualPhoto = false;
+        const heroPortraitImg = document.getElementById('heroPortraitImg');
+        const sidebarAvatarImg = document.getElementById('sidebarAvatarImg');
+        const heroPhotoSwitchBtn = document.getElementById('heroPhotoSwitchBtn');
+        const avatarToggleBtn = document.getElementById('avatarToggleBtn');
+
+        function togglePhoto() {
+            isCasualPhoto = !isCasualPhoto;
+            const targetSrc = isCasualPhoto ? 'images/profile-casual.jpg' : 'images/profile-formal.jpg';
+            if (heroPortraitImg) heroPortraitImg.src = targetSrc;
+            if (sidebarAvatarImg) sidebarAvatarImg.src = targetSrc;
+            showToast(isCasualPhoto ? "Switched to Smart Casual portrait" : "Switched to Formal attire portrait");
+        }
+
+        if (heroPhotoSwitchBtn) heroPhotoSwitchBtn.addEventListener('click', togglePhoto);
+        if (avatarToggleBtn) avatarToggleBtn.addEventListener('click', togglePhoto);
+
+        // Modal Control Functions
+        function openResumeModal() {
+            const modal = document.getElementById('resumeModal');
+            modal.classList.add('active');
+        }
+
+        function openProjectModal(key) {
+            const data = projectSpecs[key];
+            if (!data) return;
+            document.getElementById('modalProjectTitle').innerText = data.title;
+            document.getElementById('modalProjectBadge').innerText = data.badge;
+            document.getElementById('modalProjectContent').innerHTML = data.html;
+            document.getElementById('projectDetailModal').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.remove('active');
+        }
+
+        document.getElementById('viewResumeBtn')?.addEventListener('click', openResumeModal);
+
+        // Close modal when clicking on dark backdrop
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+
+        // Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            const text = document.getElementById('toastText');
+            if (!toast || !text) return;
+            text.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3200);
+        }
+
+        // One-Click Copy to Clipboard
+        function copyToClipboard(val, label) {
+            navigator.clipboard.writeText(val).then(() => {
+                showToast(`Copied ${label} to clipboard!`);
+            }).catch(() => {
+                showToast(`Selected: ${val}`);
+            });
+        }
+
+        // Fast Dispatch / Contact Form Handling
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('senderName').value;
+            const contact = document.getElementById('senderContact').value;
+            const msg = document.getElementById('messageBody').value;
+
+            showToast(`Thank you, ${name}! Generating fast dispatch...`);
+
+            // Prepare mailto fallback
+            setTimeout(() => {
+                const mailtoUrl = `mailto:johnrayepascua8@gmail.com?subject=Portfolio%20Inquiry%20from%20${encodeURIComponent(name)}&body=Sender:%20${encodeURIComponent(name)}%20(${encodeURIComponent(contact)})%0A%0AMessage:%0A${encodeURIComponent(msg)}`;
+                window.location.href = mailtoUrl;
+            }, 800);
+        }
+
+        // Mobile Hamburger Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebarNav = document.getElementById('sidebarNav');
+        const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+        const sidebarCloseWrapper = document.getElementById('sidebarCloseWrapper');
+
+        if (mobileMenuBtn && sidebarNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                sidebarNav.classList.add('mobile-open');
+                if (sidebarCloseWrapper) sidebarCloseWrapper.style.display = 'flex';
+            });
+        }
+
+        if (sidebarCloseBtn && sidebarNav) {
+            sidebarCloseBtn.addEventListener('click', () => {
+                sidebarNav.classList.remove('mobile-open');
+            });
+        }
+
+        // Close mobile menu on clicking nav link
+        document.querySelectorAll('.nav-item a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (sidebarNav.classList.contains('mobile-open')) {
+                    sidebarNav.classList.remove('mobile-open');
+                }
+            });
+        });
+
+        // Interactive Terminal / Developer Console Command Engine
+        function runTermCommand(cmd) {
+            const output = document.getElementById('termOutput');
+            if (!output) return;
+
+            if (cmd === 'clear') {
+                output.innerHTML = `
+          <div class="terminal-line"><span class="term-prompt">user@neust-system:~$</span> <span class="term-cmd">clear</span></div>
+          <div class="terminal-line" style="color: var(--text-dim); font-size: 0.78rem;">Console cleared. Type or click any pill below:</div>
+        `;
+                return;
+            }
+
+            let resp = "";
+            if (cmd === 'skills') {
+                resp = `
+          <div class="terminal-line"><span class="term-prompt">user@neust-system:~$</span> <span class="term-cmd">cat skills.json</span></div>
+          <div class="terminal-line" style="color: var(--primary);">• Database Engineering: MySQL, 3NF Normalization, Indexing, ERD (95%)</div>
+          <div class="terminal-line" style="color: #3b82f6;">• Application Development: Python, JavaScript, PHP, System Architecture (90%)</div>
+          <div class="terminal-line" style="color: #a855f7;">• AI Tools: Certified Google Gemini Masterclass (92%)</div>
+          <div class="terminal-line" style="color: #10b981;">• Quality Assurance & LGU Immersion Data Integrity Auditing (96%)</div>
+        `;
+            } else if (cmd === 'projects') {
+                resp = `
+          <div class="terminal-line"><span class="term-prompt">user@neust-system:~$</span> <span class="term-cmd">ls -la /production/projects/</span></div>
+          <div class="terminal-line">1. <strong>Geo-Track:</strong> Community Infrastructure Reporting & Monitoring (Capstone Lead)</div>
+          <div class="terminal-line">2. <strong>BARMS:</strong> Barangay Accomplishment, Reporting & Monitoring System</div>
+          <div class="terminal-line">3. <strong>RMS:</strong> Modern Restaurant Management & Inventory Control System</div>
+        `;
+            } else if (cmd === 'aiahdvocacy') {
+                resp = `
+          <div class="terminal-line"><span class="term-prompt">user@neust-system:~$</span> <span class="term-cmd">curl -s /volunteer/aiahdvocacy-2024</span></div>
+          <div class="terminal-line" style="color: #f472b6;">Initiative: Aiahdvocacy 2024 led by BINI Aiah (Maraiah Queen Arceta)</div>
+          <div class="terminal-line">Timeline: September – December 2024 ("Ber" months outreach run)</div>
+          <div class="terminal-line">Kickoff: Tondo, Manila — Meal packs, essentials & DIY chalk art fun for youth!</div>
+        `;
+            } else if (cmd === 'contact') {
+                resp = `
+          <div class="terminal-line"><span class="term-prompt">user@neust-system:~$</span> <span class="term-cmd">cat contacts.txt</span></div>
+          <div class="terminal-line">Mobile: 0991 686 1271 / +63 921 759 1621</div>
+          <div class="terminal-line">Email: johnrayepascua8@gmail.com</div>
+          <div class="terminal-line">Facebook: Johnraye Pascua</div>
+          <div class="terminal-line">Instagram: @jinx.zenin_</div>
+          <div class="terminal-line">Location: Bongabon, Nueva Ecija, Philippines</div>
+        `;
+            }
+
+            output.innerHTML += resp;
+            output.scrollTop = output.scrollHeight;
+        }
+
+        // Active Navigation Highlight on Scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-item');
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 140;
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.querySelector('a')?.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
